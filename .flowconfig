@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/*
+.*/webpack\.config\.js
+[include]
+./src/app.js
+
+[libs]
+
+[lints]
+sketchy-null=warn
+
+[options]
+react.runtime=automatic
+
+[strict]
