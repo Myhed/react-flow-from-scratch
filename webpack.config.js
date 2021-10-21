@@ -1,9 +1,18 @@
 const path = require("path");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     rules: [
       {
@@ -14,11 +23,18 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [ MiniCssExtractPlugin.loader, "css-loader" ]
       }
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { 
+    extensions: ["*", ".css", ".js", ".jsx"],
+    alias: {
+      Material: path.resolve(__dirname, 'node_modules/@mui/material/'),
+      Containers: path.resolve(__dirname, 'src/containers/'),
+      Components: path.resolve(__dirname, 'src/components/')
+    }
+  },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
@@ -30,6 +46,5 @@ module.exports = {
         directory: path.join(__dirname, "public/")
     },
     port: 3000
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  }
 };

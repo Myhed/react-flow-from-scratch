@@ -1,15 +1,21 @@
 [ignore]
-.*/node_modules/*
 .*/webpack\.config\.js
 [include]
 ./src/app.js
 
 [libs]
+./flow-typed/npm/@mui
 
 [lints]
 sketchy-null=warn
 
 [options]
+emoji=true
+module.file_ext=.js
+module.file_ext=.component.js
 react.runtime=automatic
+module.name_mapper='^Components/' -> '<PROJECT_ROOT>/src/components/'
+module.name_mapper='^Containers/' -> '<PROJECT_ROOT>/src/containers/'
+module.name_mapper='^Material/' -> '<PROJECT_ROOT>/node_modules/@mui/material/'
 
 [strict]

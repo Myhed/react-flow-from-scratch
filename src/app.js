@@ -1,6 +1,7 @@
-//@flow
+// @flow
 import React, { Component } from "react";
 import type { Node } from "react";
+import Game from 'Components/game';
 
 type Props = {}
 type State = {}
@@ -11,6 +12,7 @@ class App extends Component<Props, State> {
         return (
             <div className="App">
                 <h1>Hello, World</h1>
+                <Game />
             </div>
         );
     }
