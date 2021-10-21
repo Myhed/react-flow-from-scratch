@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import PrimaryButton from './square.style';
+import './style.css';
 
 type Props = {
     value: String
@@ -12,7 +12,7 @@ class Square extends React.Component<Props, State> {
     render(): React.Node {
         return (
             <>
-                <PrimaryButton variant="contained">{this.props.value}</PrimaryButton>
+
             </>
         );
     }
